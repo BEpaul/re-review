@@ -21,7 +21,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 ##### 모델링 #####
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import urllib.request
 from collections import Counter
 from konlpy.tag import Mecab
@@ -56,14 +56,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
-
 @app.get("/hello")
 async def root():
     return {"message": "Hello World"}
 
 def crawling_modeling(productName):
-    # product_name = input("상품명을 입력하세요: ")
     product_name = productName
     product_name_url = quote_plus(product_name)
 
@@ -78,6 +75,7 @@ def crawling_modeling(productName):
     # 브라우저 꺼짐 방지
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
+    chrome_options.add_argument("--headless")
 
     service = Service(executable_path=ChromeDriverManager().install()) # 크롬 드라이버 자동 업데이트
     driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -87,7 +85,6 @@ def crawling_modeling(productName):
     style_review_text = driver.find_element(By.CSS_SELECTOR, '#estimate_style').text
     match = re.search(r'\(([\d,]+)\)', style_review_text)
     image_url = driver.find_element(By.CSS_SELECTOR, '#root > div.product-detail__sc-8631sn-0.gJskhq > div.product-detail__sc-8631sn-1.fPAiGD > div.product-detail__sc-8631sn-3.jKqPJk > div.product-detail__sc-p62agb-0.daKJsk > div > img').get_attribute('src')
-    print('image_url:', image_url)
 
     if match:
         style_review_count = int(match.group(1).replace(',', ''))
@@ -132,7 +129,6 @@ def crawling_modeling(productName):
     print("COMPLETE CRAWLING")
 
     total_data = pd.read_table('reviews.txt', names=['rate', 'review'])
-    print('review datset count:', len(total_data))
 
     total_data['label'] = np.select([total_data.rate > 3], [1], default=0)
 
