@@ -44,6 +44,7 @@ uvicorn main:app --reload
     3. 산출된 값 출력
     
 
+<br>
 
 ### 키워드 검색하기
 <img width="550" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/496a02dd-f4b9-4992-8482-376257706116">  
@@ -56,6 +57,8 @@ uvicorn main:app --reload
 ## 상세 설명
 ### 서비스 아키텍처
 <img width="1000" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/c4f1aa36-e1ab-44bd-b1a6-c6980a1580ee">
+
+<br>
 
 ### 데이터 수집
 - BS4를 사용한 정적 크롤링
