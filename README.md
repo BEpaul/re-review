@@ -1,8 +1,10 @@
 # RE:Review - 감정분석을 활용한 리뷰 신뢰성 검증 프로그램
 
 ## 개요
-무신사 플랫폼에서 별점은 상향평준화가 이루어져 소비자 입장에서 좋은 제품인지 아닌지 변별이 어렵습니다. 그래서 **소비자에게 보다 도움이 되는 점수를 제공하자**는 취지에서 해당 프로젝트를 진행하게 되었습니다.
+무신사 플랫폼에서 별점은 상향평준화가 이루어져 소비자 입장에서 좋은 제품인지 아닌지 변별이 어렵습니다.  
+그래서 **소비자에게 보다 도움이 되는 점수를 제공하자**는 취지에서 해당 프로젝트를 진행하게 되었습니다.
 
+<br>
 
 ## 설치 방법
 ### 개발 환경
@@ -28,12 +30,12 @@ pip3 install
 uvicorn main:app --reload
 ```
 
+<br>
 
-## 사용법
+## 기능 설명
 ### 상품평 확인하기
-<img width="350" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/e4697c20-799a-4c05-8055-b112e0e3c032">
+<img width="350" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/e4697c20-799a-4c05-8055-b112e0e3c032">  
 
-#### 프로세스
 - DB에 해당 상품에 대한 분석 정보가 존재하는 경우
     - 저장된 값 출력
 - DB에 해당 상품 정보가 없는 경우
@@ -44,16 +46,16 @@ uvicorn main:app --reload
 
 
 ### 키워드 검색하기
-<img width="550" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/496a02dd-f4b9-4992-8482-376257706116">
+<img width="550" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/496a02dd-f4b9-4992-8482-376257706116">  
 
 - 키워드: 리뷰의 특정 단어 빈도를 기반으로 한 측정
 - 새롭게 산출된 점수를 기준으로 내림차순 출력
 
+<br>
+
 ## 상세 설명
 ### 서비스 아키텍처
 <img width="1000" alt="image" src="https://github.com/BEpaul/re-review/assets/104749551/c4f1aa36-e1ab-44bd-b1a6-c6980a1580ee">
-
-
 
 ### 데이터 수집
 - BS4를 사용한 정적 크롤링
